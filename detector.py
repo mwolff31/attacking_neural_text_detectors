@@ -27,7 +27,6 @@ class Detector(object):
 	def predict(self, txt):
 
 		tokens = self.tokenizer.encode(txt, max_length=self.tokenizer.max_len)
-		# detector actually performs better if below is commented out
 		#tokens = [self.tokenizer.bos_token_id] + tokens + [self.tokenizer.eos_token_id]
 		tokens = torch.Tensor(tokens)
 

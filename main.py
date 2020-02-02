@@ -86,7 +86,7 @@ if __name__ == '__main__':
 
 	homoglyphs = [['e', 'е'], ['a', 'а']]
 
-	exp_name = 'random_' + str(1.0) + '_e_a'
+	exp_name = 'unlimited_e_a'
 	run_experiment(
 		homoglyphs,
 		'unlimited',

@@ -22,46 +22,6 @@ def write_txt(filename, string):
 	fp.close()
 
 
-def create_misspelling_dict(fname=None):
-	if fname == 'misspellings2':
-		pairs = load_txt('misspellings2.txt').split('\n')[:-1]
-		master = []
-		for pair in pairs:
-			master.append(pair.split(' – '))
-
-		for i in range(len(master)):
-			for j in range(len(master[i][1])):
-				if master[i][1][j] == '[':
-					idx = j
-					break
-			master[i][1] = master[i][1][:idx]
-
-		master_dict = {master[i][0]: master[i][1].split(', ') for i in range(len(master))}
-
-	else:
-		pairs = load_txt('misspellings.txt').split('\n')[:-1]
-		pairs = [pair.split('->') for pair in pairs]
-		pairs = [[pair[0], pair[1].split(', ')] for pair in pairs]
-		correct_words = []
-		for i in range(len(pairs)):
-			for j in range(len(pairs[i][1])):
-				correct_words.append(pairs[i][1][j])
-		correct_words = np.unique(np.asarray(correct_words))
-		master_dict = dict()
-		for i in range(len(correct_words)):
-			pairings = []
-			for j in range(len(pairs)):
-				for k in range(len(pairs[j][1])):
-					if correct_words[i] == pairs[j][1][k]:
-						pairings.append(pairs[j][0])
-			master_dict.update({correct_words[i]: pairings})
-
-	with open('{}.json'.format(fname), 'w') as fp:
-		json.dump(master_dict, fp)
-	fp.close()
-
-	return master_dict
-
 def load_misspelling_dict(fname):
 	with open(fname, 'r') as fp:
 		d = json.load(fp)
