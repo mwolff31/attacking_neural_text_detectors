@@ -106,16 +106,16 @@ def attack(
 				new_word = word
 				if i in indices_to_change:
 					new_word, upper, eos, eos_char, poss = create_word(word)
-					mispell = np.asarray(misspelling_dict[new_word])
-					mispell = np.random.choice(mispell)
-					new_word = mispell
+					misspell = np.asarray(misspelling_dict[new_word])
+					misspell = np.random.choice(misspell)
+					new_word = misspell
 					if upper:
 						new_word = ''
-						for j in range(len(mispell)):
+						for j in range(len(misspell)):
 							if j == 0:
-								new_word += mispell[0].upper()
+								new_word += misspell[0].upper()
 							else:
-								new_word += mispell[j]
+								new_word += misspell[j]
 					if eos:
 						new_word += eos_char
 					if poss:
