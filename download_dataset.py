@@ -1,3 +1,7 @@
+
+# FROM https://github.com/openai/gpt-2-output-dataset
+
+
 import os
 import sys
 import requests
