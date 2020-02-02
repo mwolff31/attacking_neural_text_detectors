@@ -3,9 +3,6 @@ import warnings
 with warnings.catch_warnings():
 	warnings.simplefilter('ignore')
 	import numpy as np
-	import torch
-	import transformers
-	import logging
 	from detector import Detector
 	from attacks import attack
 	from utils import load_txt, write_txt, load_json_file, get_results

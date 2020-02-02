@@ -1,6 +1,5 @@
 
 import warnings
-from torchviz import make_dot
 
 
 with warnings.catch_warnings():
@@ -8,7 +7,6 @@ with warnings.catch_warnings():
 	import numpy as np
 	import torch
 	from transformers import RobertaForSequenceClassification, RobertaTokenizer
-	import time
 
 
 class Detector(object):
