@@ -1,12 +1,6 @@
-
-import warnings
-
-
-with warnings.catch_warnings():
-	warnings.filterwarnings('ignore')
-	import numpy as np
-	import torch
-	from transformers import RobertaForSequenceClassification, RobertaTokenizer
+import numpy as np
+import torch
+from transformers import RobertaForSequenceClassification, RobertaTokenizer
 
 
 class Detector(object):
