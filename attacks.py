@@ -73,7 +73,7 @@ def attack(
 							adv_text += pair[1]
 				else:
 					adv_text += text[i]
-				return adv_text, len(indices_to_change)
+			return adv_text, len(indices_to_change)
 
 
 	if attack_type == 'misspelling':
