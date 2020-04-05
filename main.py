@@ -13,7 +13,7 @@ def run_experiment(
 	experiment_name,
 	data_file,
 	percent_change = None,
-	mispelling_dict = None,
+	misspelling_dict = None,
 	throwout=False):
 
 	start_time = time.time()
@@ -40,7 +40,7 @@ def run_experiment(
 			det.tokenizer.encode(text_list[i], max_length=det.tokenizer.max_len))[3:-4]
 
 		adv_text, num_changes = attack(
-			text_to_use, homoglyphs, attack_type, percent_change, mispelling_dict, throwout)
+			text_to_use, homoglyphs, attack_type, percent_change, misspelling_dict, throwout)
 
 		if throwout and (adv_text==text_to_use):
 			pass
@@ -75,19 +75,31 @@ if __name__ == '__main__':
 	
 	data_file = './data/xl-1542M-k40.test.jsonl'
 
-	det = Detector()
+	#det = Detector()
 
-	homoglyphs = [['e', 'е'], ['a', 'а']]
+	homoglyphs = [['p', 'р']]
 
-	exp_name = 'unlimited_e_a'
-	run_experiment(
-		homoglyphs,
-		'unlimited',
-		det, 
-		exp_name,
-		data_file,
-		None,
-		None,
-		False)
+	exp_name = 'limited_p_0.015'
+	# run_experiment(
+	# 	homoglyphs,
+	# 	'random_limited',
+	# 	det, 
+	# 	exp_name,
+	# 	data_file,
+	# 	0.015,
+	# 	None,
+	# 	True)
+
+	# exp_name = 'misspelling'
+
+	# run_experiment(
+	# 	None,
+	# 	'misspelling',
+	# 	det,
+	# 	exp_name,
+	# 	data_file,
+	# 	0.05,
+	# 	'misspellings.json',
+	# 	False)
 
 	get_results(exp_name)
