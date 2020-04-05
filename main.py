@@ -75,31 +75,19 @@ if __name__ == '__main__':
 	
 	data_file = './data/xl-1542M-k40.test.jsonl'
 
-	#det = Detector()
+	det = Detector()
 
-	homoglyphs = [['p', 'р']]
+	homoglyphs = [['e', 'е']]
 
-	exp_name = 'limited_p_0.015'
-	# run_experiment(
-	# 	homoglyphs,
-	# 	'random_limited',
-	# 	det, 
-	# 	exp_name,
-	# 	data_file,
-	# 	0.015,
-	# 	None,
-	# 	True)
-
-	# exp_name = 'misspelling'
-
-	# run_experiment(
-	# 	None,
-	# 	'misspelling',
-	# 	det,
-	# 	exp_name,
-	# 	data_file,
-	# 	0.05,
-	# 	'misspellings.json',
-	# 	False)
+	exp_name = 'unlimited_e'
+	run_experiment(
+		homoglyphs,
+		'unlimited',
+		det, 
+		exp_name,
+		data_file,
+		None,
+		None,
+		None)
 
 	get_results(exp_name)
